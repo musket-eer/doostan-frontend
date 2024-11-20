@@ -1,0 +1,21 @@
+.icon-button {
+    background: none;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.icon-button:hover {
+    background-color: #f0f0f0;
+}
+
+.icon-button:disabled {
+    background-color: transparent;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
