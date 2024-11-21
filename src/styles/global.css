@@ -1,0 +1,175 @@
+/* General Styling */
+.homepage {
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    background-color: #00401a; /* Pakistani green */
+}
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    background-color: #00401a; /* Persian green */
+}
+
+.homepage {
+    background-color: #00401a; /* Persian green for the homepage */
+    color: #ffffff; /* White text */
+}
+
+h1, h2 {
+    color: #ffffff; /* Ensure headings are white */
+}
+
+/* Content Sections */
+.content-section {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    min-height: 100vh;
+    background-color: #00401a; /* Green background */
+    color: #ffffff; /* White text */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-in-out;
+}
+
+.content-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Section-specific Backgrounds */
+.section-1 {
+    background-color: #00401a; /* Dark green */
+}
+
+.section-2 {
+    background-color: #006622; /* Lighter green */
+}
+
+.section-3 {
+    background-color: #008833; /* Even lighter green */
+}
+
+/* Content Styling */
+.content {
+    flex: 1;
+    margin: 20px;
+    text-align: left;
+}
+
+.content h1,
+.content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Images */
+.image {
+    flex: 1;
+    max-width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Cards Wrapper */
+.swipable-cards-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+/* Responsive Design */
+
+/* Extra Large Screens (Desktop) */
+@media (min-width: 1200px) {
+    .content-section {
+        padding: 60px;
+    }
+
+    .content h1,
+    .content h2 {
+        font-size: 3rem;
+    }
+
+    .content p {
+        font-size: 1.5rem;
+    }
+
+    .image {
+        max-width: 45%;
+    }
+}
+
+/* Large Screens (Tablets) */
+@media (max-width: 1199px) {
+    .content {
+        flex: 1 1 100%; /* Take full width */
+        text-align: center; /* Center-align text on smaller screens */
+    }
+
+    .image {
+        max-width: 70%;
+        margin: 0 auto; /* Center the image */
+    }
+}
+
+/* Medium Screens (Phones in Landscape) */
+@media (max-width: 768px) {
+    .content h1,
+    .content h2 {
+        font-size: 2rem;
+    }
+
+    .content p {
+        font-size: 1rem;
+    }
+
+    .image {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Small Screens (Phones in Portrait) */
+@media (max-width: 576px) {
+    .content-section {
+        flex-direction: column; /* Stack items vertically */
+        padding: 20px;
+    }
+
+    .content h1,
+    .content h2 {
+        font-size: 1.8rem;
+    }
+
+    .content p {
+        font-size: 0.9rem;
+    }
+
+    .image {
+        max-width: 100%;
+        margin: 20px 0;
+    }
+}

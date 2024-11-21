@@ -1,0 +1,12 @@
+/* Hidden by default */
+.content-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-in-out;
+}
+
+/* Become visible when scrolled into view */
+.content-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
