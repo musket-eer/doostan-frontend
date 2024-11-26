@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './loginForm.css';
+
 
 const LoginForm = ({ onLogin, children }) => {
     const [email, setEmail] = useState('');
@@ -11,6 +13,7 @@ const LoginForm = ({ onLogin, children }) => {
 
     return (
         <form onSubmit={handleSubmit}>
+            
             <input
                 type="email"
                 placeholder="Email"

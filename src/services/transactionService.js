@@ -1,23 +1,21 @@
-import { postRequest, getRequest } from './api';
+import { fetchData, sendData } from './api';
 
-const TRANSACTION_URL = '/transactions';
-
-export const getTransactions = async (poolId) => {
-    return await getRequest(`${TRANSACTION_URL}/pool/${poolId}`);
+// Fetch Transactions
+export const getTransactions = async () => {
+    return await fetchData('/transactions'); // Replace endpoint
 };
 
-export const depositFunds = async (poolId, amount, paymentMethod) => {
-    return await postRequest(`${TRANSACTION_URL}/deposit`, {
-        poolId,
-        amount,
-        paymentMethod,
-    });
+// Add Contribution
+export const addContribution = async (groupId, amount) => {
+    return await sendData('/transactions/contribute', { groupId, amount }); // Replace endpoint
 };
 
-export const transferFunds = async (poolId, targetUserId, amount) => {
-    return await postRequest(`${TRANSACTION_URL}/transfer`, {
-        poolId,
-        targetUserId,
-        amount,
-    });
+// Fetch Pending Loans
+export const getPendingLoans = async () => {
+    return await fetchData('/transactions/loans'); // Replace endpoint
+};
+
+// Fetch Due Dates for Contributions
+export const getContributionReminders = async () => {
+    return await fetchData('/transactions/reminders'); // Replace endpoint
 };

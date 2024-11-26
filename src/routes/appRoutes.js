@@ -6,21 +6,54 @@ import HomePage from '../pages/homePage';
 import ForgotPasswordPage from '../pages/forgotPasswordPage';
 import DashboardPage from '../pages/dashboardPage';
 import NavigationBar from '../components/navigationBar/navigationBar';
-
-// Import other pages...
+import FeedPage from '../pages/feedPage';
+import TransactionPage from '../pages/transactionsPage';
+import ProfilePage from '../pages/profilePage'; // Import ProfilePage
+import ProtectedRoute from '../routes/protectedRoute'; // Adjust the path based on your folder structure
+import { AuthProvider } from '../contexts/authContext';
 
 const AppRoutes = () => {
     return (
         <Router>
-            <NavigationBar/>
-            <Routes>
-                <Route path="/" element={<HomePage/>} />
-                <Route path="/login" element={<LoginPage/>} />
-                <Route path="/signup" element={<SignupPage />} />
-                <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                <Route path="/dashboard" element={<DashboardPage />} />
-                {/* Add other routes */}
-            </Routes>
+            <AuthProvider>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/signup" element={<SignupPage />} />
+                    <Route
+                        path="/dashboard"
+                        element={
+                            <ProtectedRoute>
+                                <DashboardPage />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/feed"
+                        element={
+                            <ProtectedRoute>
+                                <FeedPage />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/transaction"
+                        element={
+                            <ProtectedRoute>
+                                <TransactionPage />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/profile"
+                        element={
+                            <ProtectedRoute>
+                                <ProfilePage />
+                            </ProtectedRoute>
+                        }
+                    />
+                </Routes>
+            </AuthProvider>
         </Router>
     );
 };

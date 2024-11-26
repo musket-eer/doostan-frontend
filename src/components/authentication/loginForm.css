@@ -1,0 +1,27 @@
+/* Center the Form on the Page */
+.form-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    height: 100vh; /* Full viewport height for vertical centering */
+    width: 100%; /* Full width for alignment */
+    gap: 20px; /* Space between inputs and button */
+    box-sizing: border-box;
+}
+
+/* Input Fields Styling */
+input {
+    width: 40%; /* Restrict width to 40% */
+    padding: 10px; /* Add padding for usability */
+    font-size: 1rem; /* Consistent font size */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+/* Adjust Button Width to Match Inputs */
+.primary-button {
+    width: 40%; /* Same width as input fields */
+    text-align: center;
+}

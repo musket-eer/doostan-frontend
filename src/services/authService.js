@@ -1,17 +1,18 @@
-import { postRequest } from './api';
+import { sendData } from './api';
 
-const AUTH_URL = '/auth';
-
+// Login Service
 export const login = async (email, password) => {
-    const response = await postRequest(`${AUTH_URL}/login`, { email, password });
-    localStorage.setItem('token', response.token); // Store token
-    return response.user;
+    const data = await sendData('/auth/login', { email, password }); // Replace endpoint
+    localStorage.setItem('authToken', data.token); // Save token
+    return data;
 };
 
-export const logout = () => {
-    localStorage.removeItem('token'); // Remove token
+// Signup Service
+export const signup = async (name, email, password) => {
+    return await sendData('/auth/signup', { name, email, password }); // Replace endpoint
 };
 
-export const getToken = () => {
-    return localStorage.getItem('token');
+// Forgot Password Service
+export const forgotPassword = async (email) => {
+    return await sendData('/auth/forgot-password', { email }); // Replace endpoint
 };

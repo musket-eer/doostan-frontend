@@ -1,14 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import LoginForm from '../components/authentication/loginForm';
 import SocialAuthButtons from '../components/authentication/socialAuthButtons';
 import AuthHeader from '../components/authentication/authHeader';
 import PrimaryButton from '../components/buttons/primaryButton';
+import { login } from '../services/authService';
 
 
 const LoginPage = () => {
-    const handleLogin = (credentials) => {
-        console.log('Logging in with:', credentials);
-        // Add login logic here
+    // Add login logic here
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleLogin = async () => {
+        try {
+            const userData = await login(email, password);
+            alert(`Welcome back, ${userData.name}!`);
+            window.location.href = '/dashboard'; // Redirect to dashboard
+        } catch (error) {
+            alert('Failed to log in. Please check your credentials.');
+        }
+
+            
     };
 
     const handleGoogleLogin = () => {
@@ -23,16 +35,22 @@ const LoginPage = () => {
 
     return (
         <div>
-            <AuthHeader title="Login" subtitle="Welcome back! Please log in to your account." />
-            <LoginForm onLogin={handleLogin}>
-                <PrimaryButton type="submit">Login</PrimaryButton>
-            </LoginForm>
-            <SocialAuthButtons
-                onGoogleLogin={handleGoogleLogin}
-                onFacebookLogin={handleFacebookLogin}
+            <h1>Login</h1>
+            <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
             />
+            <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <button onClick={handleLogin}>Login</button>
         </div>
-    );
-};
+         );
+    };
 
 export default LoginPage;
